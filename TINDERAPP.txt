@@ -1,0 +1,164 @@
+import firebase_admin
+from firebase_admin import auth, firestore, storage, credentials
+
+
+
+
+#---------------- firebase database initiate START ----------------------------------------------------
+cred=credentials.Certificate("/content/firebase-adminsdk-8yhsi@tinder-letsuprade.iam.gserviceaccount.json")
+firebase_app = firebase_admin.initialize_app(cred)
+store = firestore.client()
+#----------------- END ---------------------------------------------------------------------------
+
+
+try:
+
+  user = auth.create_user(
+    email='bhavani@gmail.in',
+    email_verified=False,
+    password='123456')
+   print('Sucessfully created new user: {0}'.format(user.uid))
+except:
+
+  print("User already there")
+  
+  try:
+
+  user=auth.get_user_by_email("alaga25@gmail.in")
+  print(user.uid)
+
+  except:
+
+  print("User is not found")
+ 
+def signUp(usermail,userpassword)
+   uid=""
+   message=""
+try:
+
+  user = auth.create_user(
+    email=useremail',
+    email_verified=False,
+    password=userpassword)
+    message="sucessfully"
+
+except:
+
+  print("User already there")
+  
+  return{"uid":uid,"message":message}
+  
+  
+  def login(usermail,userpassword) 
+
+   uid=""
+   message=""
+
+try:
+
+  user = auth.get_user_by_mail(useremail)
+   message="sucessfully created new user"
+   uid=user.uid
+
+except:
+
+  print("User already there")
+  return{"uid":uid,"message":message}
+
+  
+
+
+
+
+def updateUserData():
+    msg = ""
+    uid = ""
+    dit_user = {}
+    message = "Updating user Details"
+    
+
+    dit_user['name']      = dit['name']
+    dit_user['number']    = dit['number']
+    dit_user['image']     = dit['image']
+    dit_user['descp']     = dit['descp']
+    dit_user['dob']       = dit['dob']
+    dit_user['gender']    = dit['gender']
+    dit_user['passion']   = dit['passion']
+    dit_user['job']       = dit['job']
+    dit_user['email']     = dit['email']
+    dit_user['company']   = dit['company']
+    dit_user['location']["Area"]  =  dit_user['location']["Area"] 
+    dit_user['location'] ["city"] =dit_user['location'] ["city"] 
+    dit_user['location'] ["state"] =dit_user['location'] ["state"]
+    dit_user['createdAt'] = Firestore.SERVER_TIMESTAMP
+
+  dit={}
+
+
+   dit_user['name']      = "Bhavani"
+    dit_user['number']    = "2345678"
+    dit_user['image']     = "nil"
+    dit_user['descp']     = "Ambivert"
+    dit_user['dob']       = "05/11/1985"
+    dit_user['gender']    ="male"
+    dit_user['passion']   = "driving"
+    dit_user['job']       ="developer"
+    dit_user['email']     = "bhavani0511@gmail.com"
+    dit_user['company']   = "Everest technologies"
+    dit_user['location']["Area"]  = "Nelson park"
+    dit_user['location'] ["city"] = "Kolkata"
+    dit_user['location'] ["state"] = "West Bengal"
+    dit_user['location'] ["Country"] = "India"
+    
+
+updateUserData("8vasddgtv5SBnug08nu7",dit)
+
+    store.collection("users").document(uid).set.(dit_user_details)
+    
+
+def getFeed(country)
+  
+  docs= store.collection("users").where("gender","==",gender).stream()
+
+  for i doc in docs:
+   if doc.to_dict.get("location").get("country")==country
+    dit[doc.id] = doc.to_dict()
+
+    return dit
+
+  allProfiles = getFeed("India","Mumbai")
+
+
+  def swipeFun(uidA, uidB,isA_Yes, isB_Yes):
+
+    dit{}
+    
+   dit["UID_A"] = uidA
+   dit["UID_B"] = uidB
+   dit["isA_Yes"] = isA_Yes
+   dit["isB_Yes"] = isB_Yes
+   dit["Profile shown"]= firstTime
+   dit_user['createdAt'] = Firestore.SERVER_TIMESTAMP
+    
+    store.collection("matches").add(dit)
+
+  uidA="8vasddgtv5SBnug08nu7"
+  uidB="5bbuiCbuBG8biub7NRi8"
+  isA_Yes=True
+  isB_Yes=False
+  firstTime=False
+  
+  swipeFun(uidA, uidB,isA_Yes, isB_Yes, firstTime)
+
+
+def matchFun(uid)
+ 
+  docs=store.collection("swipes").stream()
+  for doc in docs 
+
+      if doc.to_dict.get("UID_A")== uid or doc.to_dict().get("UID_B") == uid and (doc.to_dict().get("isA_Yes")== True or doc.to_dict().get("isB_Yes")== True)
+      ditSwipes[doc.id] = doc.to_dict()
+
+      return ditSwipes
+
+getMatchFun("5bbuiCbuBG8biub7NRi8")
